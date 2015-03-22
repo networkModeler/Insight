@@ -1,8 +1,8 @@
-## INSIGHT CODING CHALLENGE SOLUTION BY DALE WONG ##
+## INSIGHT CODING CHALLENGE BY DALE WONG ##
 
 ### Summary ###
 
-My solution to the Insight coding challenge.  Development was in C++ (~2600 lines of code), in an object-oriented style, and makes use of the Standard Template Library.
+My solution to the Insight coding challenge.  Development was in C++ (~1800 lines of code), in an object-oriented style, and makes use of the Standard Template Library.
 
 There are two major design decisions:
 
