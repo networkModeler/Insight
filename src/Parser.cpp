@@ -124,8 +124,8 @@ namespace parser
     {
         // Initialize
         unsigned int numWordsThisLine = 0;
-        unsigned long start = 0;
-        unsigned long finish = 0;
+        size_t start = 0;
+        size_t finish = 0;
 
         // For each word in this line
         while (true)

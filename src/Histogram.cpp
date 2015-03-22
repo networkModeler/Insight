@@ -81,9 +81,10 @@ namespace histogram
         // Initialize
         float median = 0;
         unsigned long subTotal = 0;
+        unsigned long previousSubTotal = 0;
+        unsigned long previousWordsPerLine = 0;
         unsigned int size = this->histogram.size();
         unsigned int half = this->numEntries / 2;
-        unsigned long previousWordsPerLine = 0;
 
         // For each entry in the histogram, starting at 0
         for (unsigned int wordsPerLine = 0; wordsPerLine < size; ++wordsPerLine)
@@ -106,8 +107,17 @@ namespace histogram
                     }
                     else
                     {
-                        // Even: the median is the average of this and the previous wordsPerLine
-                        median = (previousWordsPerLine + wordsPerLine) / 2.0f;
+                        // Even: check if we are just past the cusp
+                        if (previousSubTotal == half)
+                        {
+                            // The median is the average of this and the previous wordsPerLine
+                            median = (previousWordsPerLine + wordsPerLine) / 2.0f;
+                        }
+                        else
+                        {
+                            // The median is simply this wordsPerLine
+                            median = (float)wordsPerLine;
+                        }
                     }
 
                     // We're done
@@ -116,6 +126,7 @@ namespace histogram
 
                 // Remember for the next iteration
                 previousWordsPerLine = wordsPerLine;
+                previousSubTotal = subTotal;
             }
         }
 

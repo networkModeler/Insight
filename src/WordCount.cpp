@@ -11,6 +11,7 @@
 #include <iostream>     // cout, etc
 #include <iomanip>      // setw
 #include <climits>      // UINT_MAX
+#include <ctime>        // clock
 #include "Constants.h"
 #include "WordMap.h"
 #include "Histogram.h"
@@ -49,6 +50,9 @@ namespace wordCount
 
     void WordCount::run(Constants& constants)
     {
+        // Remember the starting CPU clock
+        clock_t clockTicks = clock();
+
         cout << endl;
         cout << "RUNNING INSIGHT CODING CHALLENGE" << endl;
 
@@ -64,7 +68,8 @@ namespace wordCount
         // Open a file for the running medians
         // Keep an open file so we can output the running medians as we parse each line,
         // rather than store a huge number of medians for output later
-        ofstream outputFile(constants.getFullMedianFileName());
+        string fileName = constants.getFullMedianFileName();
+        ofstream outputFile(fileName);
 		if (!outputFile.is_open())
 		{
 			cout << "failed to open running median file" << endl;
@@ -83,6 +88,12 @@ namespace wordCount
         cout << "OUTPUT FILES" << endl;
         cout << left << setw(24) << "running median file:" << constants.getFullMedianFileName() << endl;
         cout << left << setw(24) << "word count file:" << constants.getFullWordFileName() << endl;
+
+        // Calculate the number of CPU seconds
+        clockTicks = clock() - clockTicks;
+        float seconds = (float)clockTicks / CLOCKS_PER_SEC;
+        cout << endl;
+        cout << left << setw(24) << "CPU seconds elapsed:" << fixed << setprecision(3) << seconds << endl;
 
         return;
     }
