@@ -50,6 +50,7 @@ namespace constants
         this->wordFileName          = wordFileName;
         this->medianFileName        = medianFileName;
         this->delimiters            = delimiters;
+        this->punctuation           = punctuation;
         this->maxWordsPerLine       = maxWordsPerLine;
 
         // Derived constants
