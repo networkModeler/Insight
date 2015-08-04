@@ -13,7 +13,7 @@ Test functions were written to verify each major component.  A test suite of var
 
 ## Problem Statement ##
 
-The original problem statement can be found at <https://github.com/InsightDataScience/cc-example> on GitHub.
+The original problem statement can be found in PROBLEM_DESCRIPTION.md in this directory.
 
 Of particular note is that the number of files/lines can be very large.
 
